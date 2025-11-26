@@ -573,6 +573,39 @@
   <script src="/_sdk/element_sdk.js"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+    // Toggle mobile navigation menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    const natureImages = document.querySelectorAll('.nature-image');
+    natureImages.forEach(function(image) {
+        /
+        image.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        image.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+        
+        image.addEventListener('click', function() {
+            const altText = this.alt || '古晋自然景观';
+            alert('正在查看: ' + altText);
+        });
+    });
+  </script>
+  
   <!-- Import common CSS + Cultural specific CSS -->
   <link rel="stylesheet" href="./css/main-style.css">
   <link rel="stylesheet" href="./css/cultural-style.css">
