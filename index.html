@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html lang="EN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Sarawak Kuching</title>
+  <title>Explore Sarawak Kuching - Capture Kuching's Core Charm</title>
   <style>
-    body {
-      box-sizing: border-box;
-      color: rgb(0, 0, 0);
+    /* Reset and Base Styles */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      min-height: 100%;
-      height: 100%;
-      scroll-behavior: smooth;
+      line-height: 1.6;
+      color: #333;
       overflow-x: hidden;
     }
 
     html {
-      height: 100%;
       scroll-behavior: smooth;
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     /* Header & Navigation */
@@ -33,23 +30,15 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      padding: 1.25rem 2rem;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     header.scrolled {
-      box-shadow: 0 4px 20px rgb(245, 244, 244);
-    }
-
-    .logo {
-      font-family: helvetica;
-      font-size: 1.75rem;
-      font-weight: 700;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
 
     nav {
@@ -60,20 +49,29 @@
       align-items: center;
     }
 
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
-      margin: 0;
-      padding: 0;
     }
 
     .nav-links a {
       text-decoration: none;
+      color: #333;
       font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
+      transition: color 0.3s ease;
       padding: 0.5rem 0;
+      position: relative;
     }
 
     .nav-links a::after {
@@ -83,149 +81,171 @@
       left: 0;
       width: 0;
       height: 2px;
+      background: #22c55e;
       transition: width 0.3s ease;
     }
 
-    .nav-links a:hover::after {
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
       width: 100%;
     }
 
+    .nav-links a:hover {
+      color: #22c55e;
+    }
+
+    /* Mobile Menu Toggle */
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
-      gap: 5px;
+      gap: 4px;
+      padding: 8px;
     }
 
     .menu-toggle span {
-      width: 28px;
+      width: 25px;
       height: 3px;
+      background: #333;
       border-radius: 2px;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
 
-    /* Mobile Menu Styles */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Mobile Styles */
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex !important;
+      header {
+        padding: 1rem;
       }
-      
+
+      .menu-toggle {
+        display: flex;
+      }
+
       .nav-links {
         position: fixed;
-        top: 80px;
+        top: 70px;
         left: 0;
         right: 0;
         background: white;
         flex-direction: column;
         padding: 2rem;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-100%);
         opacity: 0;
         transition: all 0.3s ease;
+        gap: 1rem;
       }
-      
+
       .nav-links.active {
         transform: translateY(0);
         opacity: 1;
+      }
+
+      .nav-links a {
+        padding: 1rem 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
       }
     }
 
     /* Hero Section */
     .hero {
-      min-height: 100%;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 6rem 2rem 4rem 2rem;
+      padding: 6rem 1rem 4rem;
       position: relative;
       overflow: hidden;
     }
 
     .hero-background {
-      margin-top: 80px;
       position: absolute;
-      background-size: cover;
-      object-position: top;
       top: 0;
       left: 0;
       width: 100%;
-      height: 700px;
+      height: 100%;
       z-index: 0;
-      overflow: hidden;
     }
 
-    .hero-background svg {
+    .hero-background img {
       width: 100%;
       height: 100%;
-    }
-
-    .floating-elements {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
+      object-fit: cover;
+      object-position: center;
     }
 
     .hero-content {
       color: white;
-      margin-top: -200px;
       position: relative;
       z-index: 1;
-      max-width: 900px;
-      animation: fadeInUp 4s ease;
+      max-width: 800px;
     }
 
     .hero h1 {
-      font-size: 4rem;
+      font-size: clamp(2.5rem, 5vw, 4rem);
       margin: 0 0 1.5rem 0;
       font-weight: 700;
       line-height: 1.1;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .hero-subtitle {
-      font-size: 1.5rem;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
       margin-bottom: 2.5rem;
       opacity: 0.95;
+      line-height: 1.4;
     }
 
     .hero-button {
-      color: black;
+      background: white;
+      color: #333;
       display: inline-block;
-      padding: 1.25rem 3rem;
-      font-size: 1.25rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
       font-weight: 600;
       text-decoration: none;
       border-radius: 50px;
       transition: all 0.3s ease;
       cursor: pointer;
       border: none;
-      font-family: inherit;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.892);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
     .hero-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
     }
 
-    /*Core Theme Navigation*/
+    /* Content Sections */
     .content {
       max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
+      margin: 4rem auto;
+      padding: 0 1rem;
     }
 
     .text-title {
-      font-family: Helvetica;
       text-align: center;
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 4vw, 2.5rem);
       color: #2c3e50;
-      margin: 30px 0 40px 0;
+      margin: 2rem 0 3rem;
       position: relative;
-      margin-top: -30px;
     }
 
     .text-title::after {
@@ -234,24 +254,22 @@
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
+      width: 80px;
       height: 4px;
       background: linear-gradient(to right, #3498db, #2ecc71);
       border-radius: 2px;
     }
 
-    /* card container */
+    /* Card Container */
     .card-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 50px;
-      width: 1250px;
-      margin-left: -42px;
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
 
     .card {
-      background-color: white;
+      background: white;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -259,8 +277,8 @@
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
 
     .card img {
@@ -270,25 +288,24 @@
     }
 
     .card-content {
-      padding: 25px;
+      padding: 1.5rem;
     }
 
     .card-header {
       display: flex;
       align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
 
     .card-tag {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background-color: #fff7f5;
-      padding: 8px;
+      background: #fff7f5;
+      padding: 0.5rem;
       border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      border: 1px solid white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       width: 50px;
       height: 50px;
     }
@@ -300,195 +317,136 @@
     }
 
     .card-title {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
       color: #2c3e50;
       font-weight: 600;
     }
 
     .card-desc {
-      font-size: 1rem;
       color: #666;
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
       line-height: 1.6;
     }
 
     .card-link {
-      font-size: 1rem;
       color: #266057;
       text-decoration: none;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 0.5rem;
       transition: color 0.3s ease;
     }
 
     .card-link:hover {
       color: #1a4038;
-      text-decoration: underline;
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .card-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .text-title {
-        font-size: 2rem;
-      }
-      
-      .card-content {
-        padding: 20px;
-      }
     }
 
     /* Full Width Sections */
     .full-width {
       width: 100%;
-      padding: 5rem 0;
-      background-color: #f4f4f4;
+      padding: 4rem 0;
+      background: #f8f9fa;
     }
-    
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
     .section-content {
       display: flex;
       align-items: center;
       gap: 3rem;
-      margin-bottom: 60px;
+      margin-bottom: 4rem;
     }
 
-    .bottom-aligned {
-      margin-bottom: 30px;
-    }
-    
     .section-text {
       flex: 1;
-      margin-left: 150px;
     }
-    
+
     .section-image {
       flex: 1;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      width: 500px;
-      height: 400px;
-    }
-    
-    .section-image img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      transition: transform 0.5s;
-      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
-    .right-aligned {
-      margin-left: 140px;
-      margin-right: -100px;
+    .section-image img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s;
     }
-    
+
     .section-image:hover img {
       transform: scale(1.05);
     }
-    
+
     .section-text h2 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
       margin-bottom: 1.5rem;
+      color: #2c3e50;
     }
-    
+
     .section-text p {
       margin-bottom: 1.5rem;
-      font-size: 1.1rem;
       color: #617183;
+      line-height: 1.6;
     }
 
-    /* Welcome Section */
-    .welcome-section {
-      padding: 5rem 0;
-      text-align: center;
-      background: white;
-    }
-    
-    .welcome-section h2 {
-      font-weight: bold;
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: #1a2a6c;
-    }
-    
-    .welcome-section p {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
-      font-weight: 100;
-    }
-    
-    .features {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 3rem;
-      flex-wrap: wrap;
-    }
-    
-    .feature {
-      flex: 1;
-      min-width: 250px;
-      margin: 1rem;
-      padding: 2rem;
-      background: #f8f9fa;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s;
-    }
-    
-    .feature:hover {
-      transform: translateY(-10px);
-    }
-    
-    .feature i {
-      font-size: 2.5rem;
-      color: #2a9d8f;
-      margin-bottom: 1rem;
+    /* Mobile layout for sections */
+    @media (max-width: 768px) {
+      .section-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .section-content:nth-child(even) {
+        flex-direction: column;
+      }
+
+      .section-image {
+        order: -1;
+      }
+
+      .section-image img {
+        height: 250px;
+      }
     }
 
-    /* Top pick section */ 
+    /* Recommendations Section */
     .width-full {
-      background-color: #ffffff;
-      padding-bottom: 50px;
+      background: white;
+      padding: 4rem 0;
     }
+
     .recommend-title {
       text-align: center;
-      margin-top: 48px;
-      margin-bottom: 48px;
-      font-family: Helvetica;
+      margin-bottom: 3rem;
     }
 
     .recommend-title h1 {
-      font-weight: bold;
-      font-size: 32px;
-      padding-bottom: 7px;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
     }
 
     .recommend-title p {
-      font-size: 18px;
-      font-weight: 300;
-      
+      color: #666;
+      font-size: 1.1rem;
     }
 
-    .recommend-card h2 {
-      font-weight: bolder;
-    }
-
-    /* Recommend box */
     .recommend-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      padding-left: 65px;
-      padding-right: 65px;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
     .card-recommend {
@@ -508,188 +466,182 @@
       width: 100%;
       height: 180px;
       object-fit: cover;
-      display: block;
     }
 
     .recommend-card {
-      padding: 20px;
+      padding: 1.5rem;
     }
 
     .recommend-card h2 {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 1rem;
       color: #2c3e50;
+      font-size: 1.2rem;
     }
 
     .recommend-card span {
-      display: inline-block;
-      width: 60px;
-      background-color: #fdd887cb;
+      background: #fdd887;
+      padding: 0.25rem 0.75rem;
       border-radius: 15px;
-      border-style: none;
-      text-align: center;
-    }
-
-    .recommend-card h2 span::before {
-      content:"★";
-      margin-right: 4px;
-      font-size: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
     }
 
     .recommend-card p {
       color: #687a8d;
       line-height: 1.5;
-      font-size: 15px;
     }
 
-    @media (max-width: 480px) {
-      .recommend-container {
-        grid-template-columns: 1fr;
-      }
-      body {
-        padding: 15px;
-      }
-    }
-
-    /* footer design */
+    /* Footer */
     .footer {
-      background-color: #121826; 
-      color: #fff;
-      padding: 40px 20px;
+      background: #121826;
+      color: white;
+      padding: 3rem 1rem 2rem;
     }
 
     .footer-container {
-      display: flex;
-      justify-content: space-between;
       max-width: 1200px;
       margin: 0 auto;
-      flex-wrap: wrap; 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
 
-    /* Logo area */
     .footer-logo h2 {
-      font-family: 'Brush Script MT', cursive; 
+      font-family: 'Brush Script MT', cursive;
       font-size: 2.5rem;
-      margin-bottom: 8px;
+      margin-bottom: 0.5rem;
     }
+
     .footer-logo p {
       color: #ccc;
-      font-size: 1rem;
     }
 
-    .footer-column {
-      margin: 20px 0;
-    }
     .footer-column h3 {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      color: #fff;
+      margin-bottom: 1rem;
+      color: white;
     }
+
     .footer-column ul {
       list-style: none;
     }
+
     .footer-column ul li {
-      margin-bottom: 10px;
+      margin-bottom: 0.5rem;
     }
+
     .footer-column ul li a {
       color: #ccc;
       text-decoration: none;
       transition: color 0.3s;
     }
+
     .footer-column ul li a:hover {
-      color: #fff;
+      color: white;
     }
 
-    /* sosial media logo */
     .social-icons {
       display: flex;
-      gap: 12px;
+      gap: 1rem;
     }
+
     .social-icons a {
-      width: 36px;
-      height: 36px;
-      background-color: #333;
+      width: 40px;
+      height: 40px;
+      background: #333;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: white;
       text-decoration: none;
-      transition: background-color 0.3s;
-    }
-    .social-icons a:hover {
-      background-color: #555;
+      transition: background 0.3s;
     }
 
-    /* bottom desc */
+    .social-icons a:hover {
+      background: #555;
+    }
+
     .footer-bottom {
       max-width: 1200px;
-      margin: 30px auto 0;
-      padding-top: 20px;
+      margin: 2rem auto 0;
+      padding-top: 2rem;
       border-top: 1px solid #444;
       color: #ccc;
-      font-size: 0.9rem;
       text-align: center;
     }
 
-    /* media */
-    @media (max-width: 768px) {
-      .footer-container {
-        flex-direction: column;
-        gap: 20px;
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      .hero {
+        padding: 5rem 1rem 3rem;
       }
-      .footer-column {
-        margin: 10px 0;
+
+      .content {
+        margin: 2rem auto;
+      }
+
+      .card-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .recommend-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
       }
     }
   </style>
-  <!-- External resources -->
-  <!--<script src="/_sdk/element_sdk.js"></script>
-  <script src="/_sdk/data_sdk.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>-->
-  <link rel="stylesheet" href="./css/main-css.css">
-  <!-- Import CSS -->
-  <link rel="stylesheet" href="css/main-css.css">
-  <!-- Import Font Awesome -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-  <!-- Header Navigation --> 
+  <!-- Header Navigation -->
   <header id="header">
-   <nav>
-    <a href="index.html" class="logo"> 
-      <span id="site-name">Capture Kuching's Core Charm</span> 
-    </a>
-    <ul class="nav-links" id="navLinks">
-     <li><a href="index.html" id="nav-home-page">Home Page</a></li>
-     <li><a href="cultural-heritage.html" id="nav-cultaral">Cultural Heritage </a></li>
-     <li><a href="natural-wonders.html" id="nav-natural">Natural Wonders</a></li>
-     <li><a href="culinary-journey.html" id="nav-food">Culinary Journey</a></li>
-     <li><a href="travel-guide.html" id="nav-guide">Travel Guide</a></li>
-    </ul>
-    <div class="menu-toggle" id="menuToggle">
-      <span></span> <span></span> <span></span>
-    </div>
-   </nav>
+    <nav>
+      <a href="index.html" class="logo">
+        <span>Capture Kuching's Core Charm</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="cultural-heritage.html">Cultural Heritage</a></li>
+        <li><a href="natural-wonders.html">Natural Wonders</a></li>
+        <li><a href="culinary-journey.html">Culinary Journey</a></li>
+        <li><a href="travel-guide.html">Travel Guide</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-   <div class="hero-background">
-    <img src="Website Card Image Size 3.jpg" alt="Waterfront">
-   </div>
-   <div class="hero-content">
-    <h1 id="hero-title">Kuching﹒Borneo's Cat City</h1>
-    <p class="hero-subtitle" id="hero-subtitle">Kuching is a welcoming riverside city in Sarawak where rich cultures, colonial charm, and nearby rainforests come together in the heart of Borneo.</p>
-    <a href="#core-thme" class="hero-button" id="hero-button">Explore Travel Guide</a>
-   </div>
+    <div class="hero-background">
+      <img src="Website Card Image Size 3.jpg" alt="Kuching Waterfront">
+    </div>
+    <div class="hero-content">
+      <h1>Kuching · Borneo's Cat City</h1>
+      <p class="hero-subtitle">Kuching is a welcoming riverside city in Sarawak where rich cultures, colonial charm, and nearby rainforests come together in the heart of Borneo.</p>
+      <a href="#discover" class="hero-button">Explore Travel Guide</a>
+    </div>
   </section>
 
   <!-- Core Theme Navigation -->
-  <div class="content">
+  <div class="content" id="discover">
     <h1 class="text-title">Discover Kuching</h1>
     <div class="card-container">
       <!-- Card 1 -->
@@ -698,22 +650,22 @@
         <div class="card-content">
           <div class="card-header">
             <span class="card-tag" style="background-color: #f97316;">
-              <img src="building.svg" class="svg-img">
+              <img src="building.svg" class="svg-img" alt="Culture Icon">
             </span>
             <h3 class="card-title">Cultural Heritage</h3>
           </div>
-          <p class="card-desc">Borneo Cultures Meseum, largest meseum in Malaysia nad the second largest in Southeast Asia.</p>
-          <a href="#" class="card-link">Explore Culture →</a>
+          <p class="card-desc">Borneo Cultures Museum, largest museum in Malaysia and the second largest in Southeast Asia.</p>
+          <a href="cultural-heritage.html" class="card-link">Explore Culture →</a>
         </div>
       </div>
 
       <!-- Card 2 -->
       <div class="card">
-        <img src="natural .jpg" alt="Orangutan">
+        <img src="natural .jpg" alt="Natural Wonders">
         <div class="card-content">
           <div class="card-header">
             <span class="card-tag" style="background-color: #22c55e;">
-              <img src="leaf.svg" class="svg-img">
+              <img src="leaf.svg" class="svg-img" alt="Nature Icon">
             </span>
             <h3 class="card-title">Natural Wonders</h3>
           </div>
@@ -728,7 +680,7 @@
         <div class="card-content">
           <div class="card-header">
             <span class="card-tag" style="background-color: #ef4444;">
-              <img src="cutlery.svg" class="svg-img">
+              <img src="cutlery.svg" class="svg-img" alt="Food Icon">
             </span>
             <h3 class="card-title">Culinary Journey</h3>
           </div>
@@ -740,7 +692,7 @@
   </div>
 
   <!-- Welcome Section -->
-  <section class="full-width ">
+  <section class="full-width">
     <div class="container">
       <div class="section-content">
         <div class="section-text">
@@ -752,12 +704,9 @@
           <img src="cat-family-kuching.jpg" alt="Kuching City">
         </div>
       </div>
-    </div>
 
-    <!-- Living Heritage Section -->
-    <div class="container">
-      <div class="section-content bottom-aligned">
-        <div class="section-image right-aligned">
+      <div class="section-content">
+        <div class="section-image">
           <img src="Sarawak-River.jpg" alt="Sarawak River">
         </div>
         <div class="section-text">
@@ -772,11 +721,11 @@
   <section class="width-full">
     <div class="recommend-title">
       <h1>Traveler's Top Picks</h1>
-      <p>Highly rated experience you shouldn't miss</p>
+      <p>Highly rated experiences you shouldn't miss</p>
     </div>
-  
+
     <div class="recommend-container">
-      <!-- Recommend Card 1 -->
+      <!-- Card 1 -->
       <div class="card-recommend">
         <img src="bako .jpg" alt="Bako National Park">
         <div class="recommend-card">
@@ -785,29 +734,29 @@
         </div>
       </div>
 
-      <!-- Recommend Card 2 -->
+      <!-- Card 2 -->
       <div class="card-recommend">
         <img src="siniawan night market.jpg" alt="Siniawan Night Market">
         <div class="recommend-card">
-          <h2>Siniawan Night Market<span>4.6</span></h2>
+          <h2>Siniawan Night Market <span>4.6</span></h2>
           <p>Fri-Sun night street market with satay, seafood, local snack and souvenirs.</p>
         </div>
       </div>
 
-      <!-- Recommend Card 3 -->
+      <!-- Card 3 -->
       <div class="card-recommend">
         <img src="orangutan.jpeg" alt="Orangutan">
         <div class="recommend-card">
-          <h2>Semenggoh Centre<span>4.5</span></h2>
+          <h2>Semenggoh Centre <span>4.5</span></h2>
           <p>10am & 3pm feedings - close encounters with semi-wild orangutan.</p>
         </div>
       </div>
 
-      <!-- Recommend Card 4 -->
+      <!-- Card 4 -->
       <div class="card-recommend">
         <img src="kantin-kerabu-sotong.jpg" alt="KANTIN at the Granary">
         <div class="recommend-card">
-          <h2>KANTIN at the Granary<span>4.3</span></h2>
+          <h2>KANTIN at the Granary <span>4.3</span></h2>
           <p>Taste the inspiring innovation and diversity of Sarawak's cuisine at Kantin at the Granary.</p>
         </div>
       </div>
@@ -824,9 +773,9 @@
       <div class="footer-column">
         <h3>Explore</h3>
         <ul>
-          <li><a href="#">Cultural Heritage</a></li>
-          <li><a href="natural-wonders.html" id="nav-natural">Natural Wonders</a></li>
-          <li><a href="culinary-journey.html" id="nav-food">Culinary Journey</a></li>
+          <li><a href="cultural-heritage.html">Cultural Heritage</a></li>
+          <li><a href="natural-wonders.html">Natural Wonders</a></li>
+          <li><a href="culinary-journey.html">Culinary Journey</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -854,49 +803,48 @@
   <!-- JavaScript -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      console.log("🎯 JavaScript 已加载！");
-      
-      // 1. 测试功能 - 创建红色按钮
-      var testBtn = document.createElement('button');
-      testBtn.textContent = '测试按钮';
-      testBtn.style.cssText = 'position:fixed; top:10px; left:10px; background:red; color:white; padding:10px; z-index:9999; border:none; cursor:pointer;';
-      testBtn.onclick = function() { 
-        alert('JavaScript 工作正常！');
-        this.style.background = 'green';
-      };
-      document.body.appendChild(testBtn);
-      
-      // 2. 移动端菜单切换功能
+      console.log("Website loaded successfully!");
+
+      // Mobile menu functionality
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
-      
+
       if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
           navLinks.classList.toggle('active');
-          console.log('移动菜单已切换');
+          menuToggle.classList.toggle('active');
         });
       }
-      
-      // 3. 图片悬停效果
+
+      // Close mobile menu when clicking on links
+      const navItems = document.querySelectorAll('.nav-links a');
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          menuToggle.classList.remove('active');
+        });
+      });
+
+      // Image hover effects
       const images = document.querySelectorAll('.card img, .card-recommend img');
       images.forEach(function(image) {
         image.addEventListener('mouseenter', function() {
           this.style.transform = 'scale(1.05)';
           this.style.transition = 'transform 0.3s ease';
         });
-        
+
         image.addEventListener('mouseleave', function() {
           this.style.transform = 'scale(1)';
         });
-        
-        // 点击图片显示信息
+
+        // Click to view image info
         image.addEventListener('click', function() {
           const altText = this.alt || 'Kuching Attraction';
           alert('Viewing: ' + altText);
         });
       });
-      
-      // 4. 滚动时头部阴影效果
+
+      // Header scroll effect
       window.addEventListener('scroll', function() {
         const header = document.getElementById('header');
         if (window.scrollY > 100) {
@@ -905,8 +853,22 @@
           header.classList.remove('scrolled');
         }
       });
-      
-      console.log("✅ 所有JavaScript功能已加载完成");
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      console.log("All JavaScript features loaded successfully!");
     });
   </script>
 </body>
