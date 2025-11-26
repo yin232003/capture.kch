@@ -104,6 +104,31 @@
       transition: 0.3s;
     }
 
+    @media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 /* Hero Section */
     .hero {
       min-height: 100%;
@@ -842,7 +867,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const natureImages = document.querySelectorAll('.nature-image');
     natureImages.forEach(function(image) {
-        /
+        
         image.addEventListener('mouseenter', function() {
             this.style.transform = 'scale(1.05)';
             this.style.transition = 'transform 0.3s ease';
