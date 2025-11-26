@@ -858,24 +858,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 测试代码 - 先确认 JavaScript 能工作
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎯 JavaScript 已加载！');
-    
-    // 简单的测试功能
-    const testButton = document.createElement('button');
-    testButton.textContent = '点击测试 JS';
-    testButton.style.cssText = 'position: fixed; top: 10px; left: 10px; padding: 10px; background: red; color: white; z-index: 9999;';
-    testButton.onclick = function() {
-        alert('JavaScript 正常工作！');
-        this.style.background = 'green';
-    };
-    document.body.appendChild(testButton);
-    
-    console.log('✅ 测试按钮已添加');
-});
+    // 最简单的测试
+console.log("🚨 第一行 JavaScript 执行了");
+alert("如果看到这个弹窗，说明 JavaScript 工作了！");
+
+// 创建测试按钮
+var testBtn = document.createElement('button');
+testBtn.textContent = '测试按钮';
+testBtn.style = 'position:fixed; top:10px; left:10px; background:red; color:white; padding:10px; z-index:9999;';
+testBtn.onclick = function() { alert('按钮被点击了！'); };
+document.body.appendChild(testBtn);
+
+console.log("✅ 测试按钮已创建");
     
   </script>
-  <script src="main-script.js"></script>
 </body>
 </html>
