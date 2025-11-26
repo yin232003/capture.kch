@@ -418,6 +418,18 @@
   <script src="/_sdk/element_sdk.js"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  <script>
+    function initImageGallery() {
+    const images = document.querySelectorAll('.gallery-image');
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            img.classList.toggle('enlarged');
+        });
+    });
+}
+// Initialize the gallery when the page loads
+document.addEventListener('DOMContentLoaded', initImageGallery);
+  </script>
   <!-- Import common CSS + Natural page specific CSS -->
   <link rel="stylesheet" href="./css/main-style.css">
   <link rel="stylesheet" href="./css/natural-style.css">
