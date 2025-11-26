@@ -857,6 +857,24 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('正在查看: ' + altText);
         });
     });
+
+    // 测试代码 - 先确认 JavaScript 能工作
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🎯 JavaScript 已加载！');
+    
+    // 简单的测试功能
+    const testButton = document.createElement('button');
+    testButton.textContent = '点击测试 JS';
+    testButton.style.cssText = 'position: fixed; top: 10px; left: 10px; padding: 10px; background: red; color: white; z-index: 9999;';
+    testButton.onclick = function() {
+        alert('JavaScript 正常工作！');
+        this.style.background = 'green';
+    };
+    document.body.appendChild(testButton);
+    
+    console.log('✅ 测试按钮已添加');
+});
+    
   </script>
   <script src="main-script.js"></script>
 </body>
