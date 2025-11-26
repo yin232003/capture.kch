@@ -619,12 +619,21 @@
     margin: 10px 0;
   }
 }
-
   </style>
   <!-- External resources -->
   <script src="/_sdk/element_sdk.js"></script>
   <script src="/_sdk/data_sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Toggle mobile navigation menu
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+  </script>
   <link rel="stylesheet" href="./css/main-css.css">
   <!-- Import CSS -->
   <link rel="stylesheet" href="css/main-css.css">
