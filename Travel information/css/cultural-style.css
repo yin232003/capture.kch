@@ -1,0 +1,563 @@
+    body {
+      box-sizing: border-box;
+      color: rgb(0, 0, 0);
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      min-height: 100%;
+      height: 100%;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    html {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 20px rgb(245, 244, 244);
+    }
+
+    .logo {
+      font-family: helvetica;
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 28px;
+      height: 3px;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+/* Hero Section */
+.hero {
+  height: 50vh;
+  position: relative;
+  overflow: hidden;
+}
+.hero-background {
+  width: 100%;
+  height: 100%;
+}
+.hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  filter: brightness(0.6); 
+  object-position: center 40%;
+}
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff; 
+  z-index: 10; 
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero-subtitle {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+/* Cultural Hero Section */
+.cultural-hero .hero-background img {
+  filter: brightness(0.6);
+}
+.cultural-hero .hero-content {
+  color: #fff;
+}
+
+/* Section Container */
+.section-container {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+.section-title {
+  font-size: 1.8rem;
+  color: #1E293B;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+.white-title {
+  color: #000000;
+}
+
+/* Indigenous Communities Section */
+.communities-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.community-card {
+  display: flex;
+  gap: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.community-card.reverse {
+  flex-direction: row-reverse;
+}
+.community-img {
+  flex: 1 1 400px;
+}
+.community-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.community-content {
+  flex: 1 1 400px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.community-content h3 {
+  font-size: 1.4rem;
+  color: #1E293B;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.community-content p {
+  color: #64748B;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.community-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #F5F3FF;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: #8B5CF6;
+}
+
+/* Cultural Landmarks Section */
+.landmarks-section {
+  background: #dedede;
+  padding: 4rem 0;
+}
+.landmarks-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.landmark-card {
+  flex: 1 1 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  height: 300px;
+}
+.landmark-img img {
+  width: 100%;
+  height: 50%;
+  height: 180px;
+  object-fit: cover;
+}
+.landmark-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(transparent, rgba(56, 56, 56, 0.8));
+  color: #ffffff;
+}
+.landmark-overlay h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.landmark-overlay p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+.landmark-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  color: #8B5CF6;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Traditional Arts & Crafts Section */
+.crafts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.craft-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+.craft-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.craft-icon.purple {
+  background: #F5F3FF;
+  color: #8B5CF6;
+}
+.craft-icon.green {
+  background: #ECFDF5;
+  color: #10B981;
+}
+.craft-icon.orange {
+  background: #FFF7ED;
+  color: #F97316;
+}
+.craft-icon.pink {
+  background: #FCE7F3;
+  color: #EC4899;
+}
+.craft-card h3 {
+  font-size: 1.1rem;
+  color: #1E293B;
+  margin-bottom: 0.8rem;
+}
+.craft-card p {
+  color: #64748B;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+.craft-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.craft-details span {
+  font-size: 0.9rem;
+  color: #64748B;
+}
+.material {
+  font-weight: 600;
+}
+
+/* Cultural Festivals Section */
+.festivals-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.festival-item {
+  display: flex;
+  gap: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+}
+.festival-date {
+  flex: 0 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #F5F3FF;
+  color: #8B5CF6;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.month {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.year {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.festival-content {
+  flex: 1;
+}
+.festival-content h3 {
+  font-size: 1.2rem;
+  color: #1E293B;
+  margin-bottom: 0.8rem;
+}
+.festival-content p {
+  color: #64748B;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+.festival-activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.activity-tag {
+  background: #E0E7FF;
+  color: #4F46E5;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* Cultural Experience Section */
+.experience-section {
+  background: #2c3e5a;
+  padding: 4rem 0;
+}
+.experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.experience-card {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 2rem;
+  color: #fff;
+}
+.experience-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.362);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.experience-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+.experience-card p {
+  line-height: 1.4;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+.duration {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* CTA Section */
+.cultural-cta {
+  background: linear-gradient(90deg, #8B5CF6, #EC4899);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+.cta-content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+}
+.cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: #fff;
+  color: #8B5CF6;
+  border-radius: 28px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+.cta-btn:hover {
+  background: #F5F3FF;
+}
+
+/* footer design */
+.footer {
+  background-color: #121826; 
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; 
+}
+
+/* Logo area */
+.footer-logo h2 {
+  font-family: 'Brush Script MT', cursive; 
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+.footer-logo p {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.footer-column {
+  margin: 20px 0;
+}
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+.footer-column ul {
+  list-style: none;
+}
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+/* sosial media logo */
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+.social-icons a {
+  width: 36px;
+  height: 36px;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.social-icons a:hover {
+  background-color: #555;
+}
+
+/* bottom desc */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* media */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer-column {
+    margin: 10px 0;
+  }
+}

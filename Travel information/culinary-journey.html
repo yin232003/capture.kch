@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Culinary Journey | Kuching</title>
+  <!-- External resources -->
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  <!-- Import common CSS + Culinary page specific CSS -->
+  <link rel="stylesheet" href="./css/main-style.css">
+  <link rel="stylesheet" href="./css/culinary-style.css">
+  <!-- Import Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header Navigation -->
+  <header id="header">
+   <nav>
+    <a href="index.html" class="logo"> 
+      <span id="site-name">Capture Kuching's Core Charm</span> 
+    </a>
+    <ul class="nav-links" id="navLinks">
+     <li><a href="index.html" id="nav-home-page">Home Page</a></li>
+     <li><a href="cultural-heritage.html" id="nav-cultaral">Cultural Heritage </a></li>
+     <li><a href="natural-wonders.html" id="nav-natural">Natural Wonders</a></li>
+     <li><a href="culinary-journey.html" id="nav-food" style="color: #ef4444; font-weight: bold;">Culinary Journey</a></li>
+     <li><a href="travel-guide.html" id="nav-guide">Travel Guide</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle"><span></span> <span></span> <span></span></div>
+   </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero culinary-hero" id="home">
+   <div class="hero-background">
+    <img src="../media/image/sarawakfood.avif" alt="Food of Kuching" height="200">
+   </div>
+   <div class="hero-content">
+    <h1 class="hero-title">Food of Kuching</h1>
+    <p class="hero-subtitle" id="hero-subtitle">A Bite of Borneo</p>
+    <p class="hero-subtitle">Malay · Chinese · Dayak Fusion Cuisine</p>
+   </div>
+  </section>
+
+  <!-- Signature Dishes Section -->
+  <section class="section-container">
+    <div class="section-header">
+      <h2>Signature Dishes</h2>
+      <p>Must-try flavors that define Kuching's culinary identity</p>
+    </div>
+
+    <!-- Sarawak Laksa Card -->
+    <div class="dish-card">
+      <div class="dish-img">
+        <img src="../media/image/sarawak laksa.jpg" alt="Sarawak Laksa">
+        <div class="rating">
+          <i class="fas fa-star"></i> 4.9 / 5.0
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3>Sarawak Laksa</h3>
+        <p>Creamy, aromatic broth with turmeric, lemongrass & coconut milk.</p>
+        <div class="best-place">
+          <span class="best-place-label">Best Places to Try</span>
+          <span class="best-place-text">Chong Choon Cafe and 126 Laksa </span>
+        </div>
+        <div class="tags">
+          <span class="tag">Signature Dish</span>
+          <span class="tag">Spicy</span>
+          <span class="tag">Coconut-based</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kolo Mee Card -->
+    <div class="dish-card reverse">
+      <div class="dish-content">
+        <h3>Kolo Mee</h3>
+        <p>Dry springy noodles with BBQ pork & minced meat.</p>
+        <div class="best-place">
+          <span class="best-place-label">Best Places to Try</span>
+          <span class="best-place-text">Oriengal Park</span>
+        </div>
+        <div class="tags">
+          <span class="tag">Local Favorite</span>
+          <span class="tag">Pork</span>
+          <span class="tag">Noodles</span>
+        </div>
+      </div>
+      <div class="dish-img">
+        <img src="../media/image/Kolo mee.jpg" alt="Kolo Mee">
+        <div class="rating">
+          <i class="fas fa-star"></i> 4.7 / 5.0
+        </div>
+      </div>
+    </div>
+
+    <!-- Ayam lemak Card -->
+    <div class="dish-card">
+      <div class="dish-img">
+        <img src="../media/image/nasilemak.jpeg" alt="Ayam Pansuh">
+        <div class="rating">
+          <i class="fas fa-star"></i> 4.8 / 5.0
+        </div>
+      </div>
+      <div class="dish-content">
+        <h3>Nasi lemak Buttermilk Chicken</h3>
+        <p>A delicious twist on the classic Nasi Lemak, served with crispy , flavorful buttermilk chicken.</p>
+        <div class="best-place">
+          <span class="best-place-label">Best Places to Try</span>
+          <span class="best-place-text">Peanuts Anchovies</span>
+        </div>
+        <div class="tags">
+          <span class="tag">Creamy</span>
+          <span class="tag">Traditional</span>
+          <span class="tag">Crispy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Food Hotspots Section -->
+<section class="section-container">
+  <div class="section-header">
+    <h2>Food Hotspots</h2>
+    <p>Where locals and travelers gather to eat</p>
+  </div>
+
+  <div class="hotspot-container">
+    <!-- Siniawan Night Market -->
+    <div class="hotspot-card">
+      <!-- Image + Rating + Badge -->
+      <div class="hotspot-img-wrapper">
+        <img src="../media/image/siniawan night market.jpg" alt="Siniawan Night Market">
+        <!-- Rating (Top Right) -->
+        <div class="rating-badge">
+          <i class="fas fa-star"></i> 4.6
+        </div>
+        <!-- Category Badge (Bottom Left) -->
+        <div class="category-badge">
+          Street Food Market
+        </div>
+      </div>
+      <!-- Text Card (Bottom) -->
+      <div class="hotspot-text-card">
+        <h3>Siniawan Night Market</h3>
+        <p>Vibrant weekend market with authentic street food and lively atmosphere.</p>
+        <!-- Open Time -->
+        <div class="open-time">
+          <i class="fas fa-store"></i>
+          <span>Open: Friday - Sunday Night</span>
+        </div>
+        <!-- Specialties -->
+        <div class="specialties">
+          <span class="specialties-title">Specialties</span>
+          <div class="tags">
+            <span class="tag">Satay</span>
+            <span class="tag">Popiah</span>
+            <span class="tag">Fresh Juices</span>
+            <span class="tag">Local Snacks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Spot Food Court -->
+    <div class="hotspot-card">
+      <div class="hotspot-img-wrapper">
+        <img src="../media/image/topspot.jpg" alt="Top Spot Food Court">
+        <div class="rating-badge">
+          <i class="fas fa-star"></i> 4.7
+        </div>
+        <div class="category-badge">
+          Seafood Center
+        </div>
+      </div>
+      <div class="hotspot-text-card">
+        <h3>Top Spot Food Court</h3>
+        <p>Iconic seafood landmark known for fresh catches and rooftop dining.</p>
+        <div class="open-time">
+          <i class="fas fa-store"></i>
+          <span>Open: Daily 5pm-11pm</span>
+        </div>
+        <div class="specialties">
+          <span class="specialties-title">Specialties</span>
+          <div class="tags">
+            <span class="tag">Grilled Tiger Prawns</span>
+            <span class="tag">Fresh Fish</span>
+            <span class="tag">Crab</span>
+            <span class="tag">Squid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Foodie Tips Section -->
+  <section class="section-container">
+    <div class="section-header">
+      <h2>Foodie Tips</h2>
+    </div>
+
+    <div class="tips-container">
+      <!-- Best Time to Eat -->
+      <div class="tip-card green">
+        <div class="tip-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="tip-content">
+          <h3>Best Time to Eat</h3>
+          <p>Visit hawker centers and food courts between 6-8pm for the freshest selections and liveliest atmosphere.</p>
+        </div>
+      </div>
+
+      <!-- Budget-Friendly -->
+      <div class="tip-card yellow">
+        <div class="tip-icon">
+          <i class="fas fa-coins"></i>
+        </div>
+        <div class="tip-content">
+          <h3>Budget-Friendly</h3>
+          <p>Most local dishes cost RM8-20. Bring cash as many street vendors don't accept cards.</p>
+        </div>
+      </div>
+
+      <!-- Spice Levels -->
+      <div class="tip-card red">
+        <div class="tip-icon">
+          <i class="fas fa-fire"></i>
+        </div>
+        <div class="tip-content">
+          <h3>Spice Levels</h3>
+          <p>Don't hesitate to ask for "kurang pedas" (less spicy) if you're sensitive to heat. Most vendors are happy to adjust.</p>
+        </div>
+      </div>
+
+      <!-- Halal Options -->
+      <div class="tip-card green">
+        <div class="tip-icon">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <div class="tip-content">
+          <h3>Halal Options</h3>
+          <p>Many establishments offer halal versions of popular dishes. Look for halal certification or ask the vendor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section culinary-cta">
+    <div class="cta-content">
+      <h2>Ready to Taste Kuching?</h2>
+      <p>Plan your culinary adventure with our comprehensive travel guide</p>
+      <a href="travel-guide.html" id="nav-guide" class="cta-btn">View Travel Guide</a>
+    </div>
+  </section>
+
+  <!-- Footer (Reuse main page footer) -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>Kuching</h2>
+        <p>Discover Borneo's Cat City</p>
+      </div>
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="cultural-heritage.html" id="nav-cultaral">Cultural Heritage</a></li>
+          <li><a href="natural-wonders.html" id="nav-cultaral">Natural Wonders</a></li>
+          <li><a href="culinary-journey.html" id="nav-food">Culinary Journey</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Plan Your Trip</h3>
+        <ul>
+          <li><a href="travel-guide.html">Travel Guide</a></li>
+          <li><a href="#">Accommodation</a></li>
+          <li><a href="#">Getting Around</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Connect</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2025 Kuching Tourism. All rights reserved. - Powered by Yinyy</p>
+    </div>
+  </footer>
+
+  <!-- Import scripts: common JS first, then culinary page specific JS -->
+  <script src="./js/main-script.js"></script>
+  <script src="./js/culinary-script.js"></script>
+</body>
+</html>
