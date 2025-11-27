@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Guide | Kuching</title>
+    <title>Culinary Journey | Kuching</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -82,7 +82,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #10B981;
+            background: #ef4444;
             transition: width 0.3s ease;
         }
 
@@ -92,11 +92,11 @@
         }
 
         .nav-links a:hover {
-            color: #10B981;
+            color: #ef4444;
         }
 
         .nav-links a.active {
-            color: #10B981;
+            color: #ef4444;
             font-weight: bold;
         }
 
@@ -131,23 +131,35 @@
 
         /* Hero Section */
         .hero {
-            height: 50vh;
+            height: 70vh;
             position: relative;
             overflow: hidden;
             margin-top: 70px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
         }
 
         .hero-background {
             width: 100%;
             height: 100%;
+            position: relative;
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.8));
+            z-index: 1;
         }
 
         .hero-background img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.6);
-            object-position: center 10%;
+            filter: brightness(0.8);
         }
 
         .hero-content {
@@ -157,655 +169,557 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: #fff;
-            z-index: 10;
+            width: 90%;
+            max-width: 800px;
+            z-index: 2;
         }
 
-        .hero-content h1 {
-            font-size: 50px;
-            font-weight: bold;
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5rem);
             margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 0.5rem;
             max-width: 800px;
             margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
-        /* Section Container */
+        .hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #fecaca;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 70px;
+            z-index: 999;
+        }
+
+        .quick-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: #f8fafc;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quick-nav-item:hover,
+        .quick-nav-item.active {
+            background: #ef4444;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .quick-nav-item i {
+            font-size: 1.1rem;
+        }
+
+        /* Section Container Styles */
         .section-container {
             max-width: 1200px;
             margin: 4rem auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            color: #1E293B;
-            margin-bottom: 2rem;
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: #1e293b;
+            margin-bottom: 1rem;
             font-weight: bold;
-            font-size: 36px;
-        }
-
-        .section-subtitle {
-            color: #64748B;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        /* Getting Around: Transport Cards */
-        .transport-cards {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .transport-card {
-            flex: 1 1 200px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .transport-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .transport-card.green {
-            background: #ECFDF5;
-        }
-
-        .transport-card.purple {
-            background: #F5F3FF;
-        }
-
-        .transport-card.blue {
-            background: #EFF6FF;
-        }
-
-        .transport-card.yellow {
-            background: #FFFBEB;
-        }
-
-        .transport-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .transport-card.green .transport-icon {
-            background: #10B981;
-            color: #fff;
-        }
-
-        .transport-card.purple .transport-icon {
-            background: #8B5CF6;
-            color: #fff;
-        }
-
-        .transport-card.blue .transport-icon {
-            background: #3B82F6;
-            color: #fff;
-        }
-
-        .transport-card.yellow .transport-icon {
-            background: #FBBF24;
-            color: #000;
-        }
-
-        .transport-card h3 {
-            font-size: 1.1rem;
-            color: #1E293B;
-            margin-bottom: 0.5rem;
-        }
-
-        .transport-card p {
-            color: #64748B;
-            margin-bottom: 0.3rem;
-        }
-
-        .small-text {
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        /* Interactive Map Section */
-        .map-section {
-            margin: 4rem 0;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 500px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             position: relative;
+            display: inline-block;
         }
 
-        .map-placeholder {
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444, #f97316);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Signature Dishes Card Styles */
+        .dishes-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .dish-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 2rem;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .dish-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .dish-img {
+            flex: 1 1 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dish-img img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dish-card:hover .dish-img img {
+            transform: scale(1.1);
+        }
+
+        .dish-content {
+            flex: 1 1 400px;
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            color: white;
-            text-align: center;
-            padding: 2rem;
         }
 
-        .map-placeholder i {
-            font-size: 3rem;
+        .dish-content h3 {
+            font-size: 2rem;
+            color: #1e293b;
             margin-bottom: 1rem;
+            font-weight: bold;
         }
 
-        .map-controls {
+        .dish-content p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .rating {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             display: flex;
+            align-items: center;
             gap: 0.5rem;
-            z-index: 10;
+            font-size: 0.95rem;
+            color: #f59e0b;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .map-btn {
-            background: white;
-            border: none;
-            border-radius: 8px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        .best-place {
+            background: linear-gradient(135deg, #fef2f2, #fecaca);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #ef4444;
+        }
+
+        .best-place-label {
+            font-weight: 700;
+            color: #ef4444;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .best-place-text {
+            color: #7f1d1d;
+            font-weight: 500;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            color: #db2777;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
-        .map-btn:hover {
-            background: #f8fafc;
+        .tag:hover {
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(219, 39, 119, 0.2);
         }
 
-        .location-list {
+        /* Food Hotspots Styles */
+        .hotspot-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .location-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .location-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .location-card h3 {
-            color: #1E293B;
-            margin-bottom: 0.5rem;
-        }
-
-        .location-card p {
-            color: #64748B;
-            margin-bottom: 1rem;
-        }
-
-        .location-type {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: #EFF6FF;
-            color: #1E40AF;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* Best Time to Visit: Season Cards */
-        .season-cards {
-            display: flex;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
-        .season-card {
-            flex: 1 1 400px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .season-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .season-card.green {
-            border-left: 4px solid #10B981;
-        }
-
-        .season-card.blue {
-            border-left: 4px solid #3B82F6;
-        }
-
-        .season-icon {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .season-card.green .season-icon {
-            color: #10B981;
-        }
-
-        .season-card.blue .season-icon {
-            color: #3B82F6;
-        }
-
-        .season-card h3 {
-            font-size: 1.3rem;
-            color: #1E293B;
-            margin-bottom: 0.5rem;
-        }
-
-        .period {
-            font-weight: 600;
-            color: #64748B;
-            margin-bottom: 1rem;
-        }
-
-        .season-card p {
-            color: #64748B;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-
-        .recommend-tag {
-            background: #F3F4F6;
-            padding: 0.8rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #4B5563;
-        }
-
-        .season-card.green .recommend-tag {
-            background: #ECFDF5;
-            color: #065F46;
-        }
-
-        .season-card.blue .recommend-tag {
-            background: #EFF6FF;
-            color: #1E40AF;
-        }
-
-        /* Major Festivals Section */
-        .festival-section {
-            background: #8B5CF6;
-            padding: 4rem 2rem;
-            border-radius: 12px;
-            margin: 4rem auto;
-        }
-
-        .white-text {
-            color: #fff;
-        }
-
-        .festival-cards {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .festival-card {
-            flex: 1 1 400px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(4px);
-            border-radius: 12px;
-            padding: 2rem;
-            color: #fff;
-            transition: transform 0.3s ease;
-        }
-
-        .festival-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .festival-icon {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .festival-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .festival-date {
-            font-weight: 600;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-
-        .festival-card p {
-            line-height: 1.5;
-            opacity: 0.9;
-        }
-
-        /* Accommodation Section */
-        .accommodation-cards {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .accommodation-card {
-            flex: 1 1 300px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .hotspot-card {
+            border-radius: 16px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            background: #fff;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
         }
 
-        .accommodation-card:hover {
-            transform: translateY(-5px);
+        .hotspot-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .accommodation-card img {
+        .hotspot-img-wrapper {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .hotspot-img-wrapper img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .accommodation-card h3 {
-            font-size: 1.2rem;
-            color: #1E293B;
-            padding: 0.8rem 1.5rem 0.5rem;
-            font-weight: bold;
+        .hotspot-card:hover .hotspot-img-wrapper img {
+            transform: scale(1.1);
         }
 
-        .tag-align {
-            display:flex; 
-            align-items: center;
-            justify-content: flex-start;
-            gap: 100px;
-            margin-bottom: 10px;
-            margin-top: 12px;
-        }
-
-        .price-tag {
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin: 0;
-            display: inline-block;
-        }
-
-        .price-tag.green {
-            background: #ECFDF5;
-            color: #065F46;
-        }
-
-        .price-tag.blue {
-            background: #EFF6FF;
-            color: #1E40AF;
-        }
-
-        .price-tag.purple {
-            background: #F5F3FF;
-            color: #6D28D9;
-        }
-
-        .accommodation-card p {
-            color: #64748B;
-            line-height: 1.4;
-            padding: 0 1.5rem 1rem;
-        }
-
-        .location-tag {
+        .rating-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #64748B;
-            padding: 0 1.5rem 1.5rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #F59E0B;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
-        /* Essential Tips Section */
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .tip-card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .tip-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .tip-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .tip-icon.green {
-            background: #ECFDF5;
-            color: #10B981;
-        }
-
-        .tip-icon.blue {
-            background: #EFF6FF;
-            color: #3B82F6;
-        }
-
-        .tip-icon.yellow {
-            background: #FFFBEB;
-            color: #FBBF24;
-        }
-
-        .tip-icon.red {
-            background: #FEE2E2;
-            color: #EF4444;
-        }
-
-        .tip-icon.purple {
-            background: #F5F3FF;
-            color: #8B5CF6;
-        }
-
-        .tip-card h3 {
-            font-size: 1.1rem;
-            color: #1E293B;
-            margin-bottom: 0.5rem;
-        }
-
-        .tip-card p {
-            color: #64748B;
-            line-height: 1.4;
-        }
-
-        /* 3-Day Itinerary Section */
-        .itinerary-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .itinerary-card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 2rem;
-            position: relative;
-            border-left: 4px solid;
-            transition: transform 0.3s ease;
-        }
-
-        .itinerary-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .itinerary-card.green {
-            border-left-color: #10B981;
-        }
-
-        .itinerary-card.red {
-            border-left-color: #EF4444;
-        }
-
-        .day-number {
+        .category-badge {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 2rem;
-            font-weight: bold;
-            opacity: 0.1;
+            bottom: 1rem;
+            left: 1rem;
+            background: linear-gradient(135deg, #FBBF24, #F59E0B);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        .itinerary-card h3 {
-            font-size: 1.3rem;
+        .hotspot-text-card {
+            padding: 2rem;
+        }
+
+        .hotspot-text-card h3 {
+            font-size: 1.5rem;
             color: #1E293B;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        .itinerary-list {
-            list-style: none;
-        }
-
-        .itinerary-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-            color: #64748B;
-        }
-
-        .itinerary-list li i {
-            margin-top: 0.3rem;
-            color: #94A3B8;
-        }
-
-        /* CTA Section */
-        .travel-cta {
-            background: linear-gradient(90deg, #06B6D4, #3B82F6);
-            padding: 4rem 2rem;
-            text-align: center;
-            color: #fff;
-        }
-
-        .cta-content h2 {
-            font-size: 2rem;
             margin-bottom: 0.8rem;
             font-weight: bold;
         }
 
-        .cta-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-
-        .cta-btn.white {
-            background: #fff;
-            color: #3B82F6;
-        }
-
-        .cta-btn.orange {
-            background: #F97316;
-            color: #fff;
-        }
-
-        .cta-btn.white:hover {
-            background: #F3F4F6;
-        }
-
-        .cta-btn.orange:hover {
-            background: #EA580C;
-        }
-
-        /* footer design */
-        .footer {
-            background-color: #121826; 
-            color: #fff;
-            padding: 40px 20px;
-        }
-
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            flex-wrap: wrap; 
-        }
-
-        /* Logo area */
-        .footer-logo h2 {
-            font-family: 'Brush Script MT', cursive; 
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-        }
-
-        .footer-logo p {
-            color: #ccc;
+        .hotspot-text-card p {
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
             font-size: 1rem;
         }
 
-        .footer-column {
-            margin: 20px 0;
+        .open-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64748B;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            padding: 0.8rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .open-time i {
+            color: #10B981;
+            font-size: 1.1rem;
+        }
+
+        .specialties .specialties-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Foodie Tips Styles */
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .tip-card.green {
+            border-left: 6px solid #22c55e;
+        }
+
+        .tip-card.yellow {
+            border-left: 6px solid #f59e0b;
+        }
+
+        .tip-card.red {
+            border-left: 6px solid #ef4444;
+        }
+
+        .tip-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .tip-card.green .tip-icon {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #16a34a;
+        }
+
+        .tip-card.yellow .tip-icon {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #d97706;
+        }
+
+        .tip-card.red .tip-icon {
+            background: linear-gradient(135deg, #fecaca, #fca5a5);
+            color: #dc2626;
+        }
+
+        .tip-content h3 {
+            color: #1e293b;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .tip-content p {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Culinary CTA Section Styles */
+        .culinary-cta {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culinary-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><path fill="%23ffffff" d="M500,250c138,0,250,112,250,250S638,750,500,750S250,638,250,500S362,250,500,250z"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-1000px) rotate(360deg); }
+        }
+
+        .culinary-cta .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .culinary-cta .cta-content h2 {
+            color: #fff;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .culinary-cta .cta-content p {
+            color: #fecaca;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .culinary-cta .cta-btn {
+            background: #fff;
+            color: #ef4444;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .culinary-cta .cta-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 1rem 2rem;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo h2 {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-logo p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
         }
 
         .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: #fff;
+            margin-bottom: 1.5rem;
+            color: #f8fafc;
+            font-size: 1.3rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ef4444;
+            border-radius: 2px;
         }
 
         .footer-column ul {
@@ -813,88 +727,107 @@
         }
 
         .footer-column ul li {
-            margin-bottom: 10px;
+            margin-bottom: 0.8rem;
         }
 
         .footer-column ul li a {
-            color: #ccc;
+            color: #cbd5e1;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-column ul li a:hover {
-            color: #fff;
+            color: #ef4444;
+            transform: translateX(5px);
         }
 
-        /* social media logo */
         .social-icons {
             display: flex;
-            gap: 12px;
+            gap: 1rem;
         }
 
         .social-icons a {
-            width: 36px;
-            height: 36px;
-            background-color: #333;
+            width: 45px;
+            height: 45px;
+            background: #334155;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            color: white;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .social-icons a:hover {
-            background-color: #555;
+            background: #ef4444;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
-        /* bottom desc */
         .footer-bottom {
             max-width: 1200px;
-            margin: 30px auto 0;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #ccc;
-            font-size: 0.9rem;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
             text-align: center;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #10B981;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .back-to-top:hover {
-            background: #059669;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            font-size: 0.95rem;
         }
 
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
+            .dish-card,
+            .dish-card.reverse {
+                flex-direction: column;
+            }
+
+            .dish-img,
+            .dish-content {
+                flex: 1 1 auto;
+            }
+
+            .dish-img {
+                height: 300px;
+            }
+
+            .dish-content {
+                padding: 2rem;
+            }
+
+            .hotspot-container {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-nav-container {
+                gap: 1rem;
+            }
+
+            .quick-nav-item {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .section-container {
+                margin: 3rem auto;
+            }
+
+            .footer-container {
+                gap: 2rem;
+            }
+
             .nav-links {
                 position: fixed;
                 top: 70px;
@@ -927,64 +860,181 @@
             .menu-toggle {
                 display: flex;
             }
-
-            .transport-cards {
-                flex-direction: column;
-            }
-
-            .season-cards {
-                flex-direction: column;
-            }
-
-            .festival-cards {
-                flex-direction: column;
-            }
-
-            .accommodation-cards {
-                flex-direction: column;
-            }
-
-            .tag-align {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .footer-column {
-                margin: 10px 0;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
         }
 
         @media (max-width: 480px) {
-            .section-container {
-                padding: 0 1rem;
+            .dish-content h3 {
+                font-size: 1.6rem;
             }
 
-            .hero-content h1 {
-                font-size: 2rem;
+            .hotspot-text-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .tip-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .tags {
+                justify-content: center;
+            }
+
+            .tag {
+                font-size: 0.85rem;
+                padding: 0.4rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
             }
 
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
+
+            .footer-logo h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #ef4444;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: #dc2626;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Search and Filter Styles */
+        .search-filter-container {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .filter-tag {
+            padding: 0.5rem 1.2rem;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-tag.active {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        /* Image Zoom Modal */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Favorite Button */
+        .favorite-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .favorite-btn.active {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -992,355 +1042,394 @@
     <!-- Header Navigation -->
     <header id="header">
         <nav>
-            <a href="index.html" class="logo"> 
-                <span id="site-name">Capture Kuching's Core Charm</span> 
+            <a href="index.html" class="logo">
+                <i class="fas fa-utensils"></i>
+                <span>Capture Kuching's Core Charm</span>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" id="nav-home-page">Home Page</a></li>
-                <li><a href="cultural-heritage.html" id="nav-cultaral">Cultural Heritage</a></li>
-                <li><a href="natural-wonders.html" id="nav-natural">Natural Wonders</a></li>
-                <li><a href="culinary-journey.html" id="nav-food">Culinary Journey</a></li>
-                <li><a href="travel-guide.html" id="nav-guide" class="active">Travel Guide</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cultural-heritage.html">Cultural Heritage</a></li>
+                <li><a href="natural-wonders.html">Natural Wonders</a></li>
+                <li><a href="culinary-journey.html" class="active">Culinary Journey</a></li>
+                <li><a href="travel-guide.html">Travel Guide</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
-                <span></span> 
-                <span></span> 
+                <span></span>
+                <span></span>
                 <span></span>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero travel-hero" id="home">
+    <section class="hero culinary-hero" id="home">
         <div class="hero-background">
-            <img src="kuching city.png" alt="Kuching City View">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Food of Kuching">
         </div>
         <div class="hero-content">
-            <h1 id="hero-title">Travel Guide</h1>
-            <p class="hero-subtitle" id="hero-subtitle">Practical Essentials for Your Kuching Journey</p>
+            <h1 class="hero-title">Food of Kuching</h1>
+            <p class="hero-subtitle">A Bite of Borneo</p>
+            <p class="hero-tagline">Malay · Chinese · Dayak Fusion Cuisine</p>
         </div>
     </section>
 
-    <!-- Getting Around Section -->
-    <section class="section-container">
-        <h2 class="section-title">Getting Around</h2>
-        <div class="transport-cards">
-            <!-- Taxis -->
-            <div class="transport-card green">
-                <div class="transport-icon">
-                    <i class="fas fa-taxi"></i>
-                </div>
-                <h3>Taxis</h3>
-                <p>RM15–25 within city</p>
-                <p class="small-text">Traditional metered taxis available at major locations</p>
-            </div>
-            <!-- Grab -->
-            <div class="transport-card purple">
-                <div class="transport-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>Grab</h3>
-                <p>Usually cheaper</p>
-                <p class="small-text">Convenient ride-hailing app widely used in Kuching</p>
-            </div>
-            <!-- River Ferry -->
-            <div class="transport-card blue">
-                <div class="transport-icon">
-                    <i class="fas fa-ship"></i>
-                </div>
-                <h3>River Ferry</h3>
-                <p>RM19 to cross</p>
-                <p class="small-text">Traditional way to cross Sarawak River</p>
-            </div>
-            <!-- Day Trips -->
-            <div class="transport-card yellow">
-                <div class="transport-icon">
-                    <i class="fas fa-car"></i>
-                </div>
-                <h3>Day Trips</h3>
-                <p>RM20–150</p>
-                <p class="small-text">Shared vans to Bako or private car hire</p>
-            </div>
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+        <div class="quick-nav-container">
+            <a href="#signature-dishes" class="quick-nav-item active">
+                <i class="fas fa-star"></i>
+                <span>Signature Dishes</span>
+            </a>
+            <a href="#food-hotspots" class="quick-nav-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Food Hotspots</span>
+            </a>
+            <a href="#foodie-tips" class="quick-nav-item">
+                <i class="fas fa-lightbulb"></i>
+                <span>Foodie Tips</span>
+            </a>
+            <a href="#plan-visit" class="quick-nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Plan Your Visit</span>
+            </a>
         </div>
-    </section>
+    </div>
 
-    <!-- Interactive Map Section -->
-    <section class="section-container map-section">
-        <h2 class="section-title">Explore Kuching</h2>
-        <p class="section-subtitle">Interactive map of key attractions and transportation hubs</p>
-        
-        <div class="map-container">
-            <div class="map-placeholder">
-                <i class="fas fa-map-marked-alt"></i>
-                <h3>Interactive Kuching Map</h3>
-                <p>Explore attractions, restaurants, and transportation options</p>
-                <p>Click on the location cards below to learn more</p>
-            </div>
-            <div class="map-controls">
-                <button class="map-btn" id="zoomIn">
-                    <i class="fas fa-plus"></i>
-                </button>
-                <button class="map-btn" id="zoomOut">
-                    <i class="fas fa-minus"></i>
-                </button>
-                <button class="map-btn" id="resetMap">
-                    <i class="fas fa-sync-alt"></i>
-                </button>
-            </div>
+    <!-- Search and Filter -->
+    <div class="search-filter-container">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search for dishes, restaurants, or cuisines...">
+        <div class="filter-tags" id="filterTags">
+            <div class="filter-tag active" data-filter="all">All</div>
+            <div class="filter-tag" data-filter="malay">Malay</div>
+            <div class="filter-tag" data-filter="chinese">Chinese</div>
+            <div class="filter-tag" data-filter="dayak">Dayak</div>
+            <div class="filter-tag" data-filter="vegetarian">Vegetarian</div>
+            <div class="filter-tag" data-filter="seafood">Seafood</div>
         </div>
-        
-        <div class="location-list" id="locationList">
-            <div class="location-card" data-location="kuching-waterfront">
-                <h3>Kuching Waterfront</h3>
-                <p>Beautiful riverside promenade with restaurants, shops, and great views</p>
-                <span class="location-type">Attraction</span>
-            </div>
-            <div class="location-card" data-location="sarawak-museum">
-                <h3>Sarawak Museum</h3>
-                <p>Learn about Borneo's history, culture, and natural history</p>
-                <span class="location-type">Museum</span>
-            </div>
-            <div class="location-card" data-location="bako-national-park">
-                <h3>Bako National Park</h3>
-                <p>Oldest national park in Sarawak with diverse wildlife and hiking trails</p>
-                <span class="location-type">Nature</span>
-            </div>
-            <div class="location-card" data-location="semenggoh-orangutan">
-                <h3>Semenggoh Orangutan Centre</h3>
-                <p>See semi-wild orangutans in their natural habitat</p>
-                <span class="location-type">Wildlife</span>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- Best Time to Visit Section -->
-    <section class="section-container">
-        <h2 class="section-title">Best Time to Visit</h2>
-        <div class="season-cards">
-            <!-- Dry Season -->
-            <div class="season-card green">
-                <div class="season-icon">
-                    <i class="fas fa-sun"></i>
-                </div>
-                <h3>Dry Season</h3>
-                <p class="period">March – October</p>
-                <p>Best for hiking and wildlife spotting. Lower rainfall means better trail conditions and more active animals.</p>
-                <div class="recommend-tag">
-                    Recommended for: Outdoor activities, national park visits, beach trips
-                </div>
-            </div>
-            <!-- Wet Season -->
-            <div class="season-card blue">
-                <div class="season-icon">
-                    <i class="fas fa-cloud-rain"></i>
-                </div>
-                <h3>Wet Season</h3>
-                <p class="period">November – February</p>
-                <p>Afternoon showers are common but brief. Lush green landscapes and fewer tourists. Indoor attractions remain accessible.</p>
-                <div class="recommend-tag">
-                    Recommended for: Cultural sites, museums, food tours, budget travelers
-                </div>
-            </div>
+    <!-- Signature Dishes Section -->
+    <section class="section-container" id="signature-dishes">
+        <div class="section-header">
+            <h2>Signature Dishes</h2>
+            <p>Must-try flavors that define Kuching's culinary identity</p>
         </div>
-    </section>
 
-    <!-- Major Festivals Section -->
-    <section class="section-container festival-section">
-        <h2 class="section-title white-text">Major Festivals</h2>
-        <div class="festival-cards">
-            <!-- Rainforest World Music Festival -->
-            <div class="festival-card">
-                <div class="festival-icon">
-                    <i class="fas fa-music"></i>
+        <div class="dishes-grid" id="dishesGrid">
+            <!-- Sarawak Laksa Card -->
+            <div class="dish-card" data-categories="malay chinese seafood">
+                <div class="dish-img">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03246963d96f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sarawak Laksa">
+                    <div class="rating">
+                        <i class="fas fa-star"></i> 4.9 / 5.0
+                    </div>
+                    <button class="favorite-btn" data-id="laksa">
+                        <i class="far fa-heart"></i>
+                    </button>
                 </div>
-                <h3>Rainforest World Music Festival</h3>
-                <p class="festival-date">When: July</p>
-                <p>Three-day celebration of world music at Sarawak Cultural Village. International and indigenous performers.</p>
-            </div>
-            <!-- Sarawak Cultural Festival -->
-            <div class="festival-card">
-                <div class="festival-icon">
-                    <i class="fas fa-masks-theater"></i>
+                <div class="dish-content">
+                    <h3>Sarawak Laksa</h3>
+                    <p>Creamy, aromatic broth with turmeric, lemongrass & coconut milk. A perfect blend of Malay and Chinese flavors that will tantalize your taste buds.</p>
+                    <div class="best-place">
+                        <span class="best-place-label">🏆 Best Places to Try</span>
+                        <span class="best-place-text">Chong Choon Cafe and 126 Laksa</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Signature Dish</span>
+                        <span class="tag">Spicy</span>
+                        <span class="tag">Coconut-based</span>
+                        <span class="tag">Breakfast</span>
+                    </div>
                 </div>
-                <h3>Sarawak Cultural Festival</h3>
-                <p class="festival-date">When: September</p>
-                <p>Showcase of indigenous cultures, traditional dances, handicrafts, and local cuisine.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Accommodation Section -->
-    <section class="section-container">
-        <h2 class="section-title">Accommodation</h2>
-        <div class="accommodation-cards">
-            <!-- Budget -->
-            <div class="accommodation-card">
-                <img src="budget hotel.webp" alt="Budget Accommodation">
-                <div class="tag-align">
-                    <h3>Budget</h3>
-                    <div class="price-tag blue">RM70–120</div>
+            <!-- Kolo Mee Card -->
+            <div class="dish-card reverse" data-categories="chinese">
+                <div class="dish-content">
+                    <h3>Kolo Mee</h3>
+                    <p>Dry springy noodles with BBQ pork & minced meat. A beloved local favorite that's perfect for any time of the day.</p>
+                    <div class="best-place">
+                        <span class="best-place-label">🏆 Best Places to Try</span>
+                        <span class="best-place-text">Oriengal Park & Local Coffee Shops</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Local Favorite</span>
+                        <span class="tag">Pork</span>
+                        <span class="tag">Noodles</span>
+                        <span class="tag">Quick Meal</span>
+                    </div>
                 </div>
-                <p>A modern and convenient stay located in the heart of Tabun, perfect for easy city access.</p>
-                <div class="location-tag">
-                    <i class="fas fa-map-marker-alt"></i> Soho Tabuan Kuching
-                </div>
-            </div>
-            <!-- Mid-range -->
-            <div class="accommodation-card">
-                <img src="pullman.jpg" alt="Mid-range Accommodation">
-                <div class="tag-align">
-                    <h3>Mid-range</h3>
-                    <div class="price-tag blue">RM200–400</div>
-                </div>
-                <p>A stylish upscale hotel offering comfort, stunning city view, and premium facilities in central Kuching.</p>
-                <div class="location-tag">
-                    <i class="fas fa-map-marker-alt"></i> Pullman Hotel
+                <div class="dish-img">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Kolo Mee">
+                    <div class="rating">
+                        <i class="fas fa-star"></i> 4.7 / 5.0
+                    </div>
+                    <button class="favorite-btn" data-id="kolo-mee">
+                        <i class="far fa-heart"></i>
+                    </button>
                 </div>
             </div>
-            <!-- Luxury -->
-            <div class="accommodation-card">
-                <img src="sheraton.jpg" alt="Luxury Accommodation">
-                <div class="tag-align">
-                    <h3>Luxury</h3>
-                    <div class="price-tag purple">RM500+</div>
+
+            <!-- Nasi Lemak Buttermilk Chicken Card -->
+            <div class="dish-card" data-categories="malay">
+                <div class="dish-img">
+                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2087&q=80" alt="Nasi Lemak Buttermilk Chicken">
+                    <div class="rating">
+                        <i class="fas fa-star"></i> 4.8 / 5.0
+                    </div>
+                    <button class="favorite-btn" data-id="nasi-lemak">
+                        <i class="far fa-heart"></i>
+                    </button>
                 </div>
-                <p>A contemporary luxury hotel known for its elegant design, warm hospitality, and excellent city-center location.</p>
-                <div class="location-tag">
-                    <i class="fas fa-map-marker-alt"></i> Sheraton Hotel
+                <div class="dish-content">
+                    <h3>Nasi Lemak Buttermilk Chicken</h3>
+                    <p>A delicious twist on the classic Nasi Lemak, served with crispy, flavorful buttermilk chicken. The perfect comfort food that combines traditional and modern flavors.</p>
+                    <div class="best-place">
+                        <span class="best-place-label">🏆 Best Places to Try</span>
+                        <span class="best-place-text">Peanuts Anchovies & Modern Cafes</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Creamy</span>
+                        <span class="tag">Traditional</span>
+                        <span class="tag">Crispy</span>
+                        <span class="tag">Comfort Food</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Essential Tips Section -->
-    <section class="section-container">
-        <h2 class="section-title">Essential Tips</h2>
-        <div class="tips-grid">
-            <!-- Currency & Payment -->
-            <div class="tip-card">
-                <div class="tip-icon green">
+    <!-- Food Hotspots Section -->
+    <section class="section-container" id="food-hotspots">
+        <div class="section-header">
+            <h2>Food Hotspots</h2>
+            <p>Where locals and travelers gather to eat</p>
+        </div>
+
+        <div class="hotspot-container" id="hotspotsContainer">
+            <!-- Siniawan Night Market -->
+            <div class="hotspot-card" data-categories="malay chinese dayak">
+                <div class="hotspot-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Siniawan Night Market">
+                    <div class="rating-badge">
+                        <i class="fas fa-star"></i> 4.6
+                    </div>
+                    <div class="category-badge">
+                        Street Food Market
+                    </div>
+                    <button class="favorite-btn" data-id="siniawan-market">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+                <div class="hotspot-text-card">
+                    <h3>Siniawan Night Market</h3>
+                    <p>Vibrant weekend market with authentic street food and lively atmosphere. Experience the true local culture through food.</p>
+                    <div class="open-time">
+                        <i class="fas fa-store"></i>
+                        <span>Open: Friday - Sunday (6PM - 11PM)</span>
+                    </div>
+                    <div class="specialties">
+                        <span class="specialties-title">Must-Try Specialties:</span>
+                        <div class="tags">
+                            <span class="tag">Barbecue</span>
+                            <span class="tag">Local Snacks</span>
+                            <span class="tag">Fresh Seafood</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Spot Food Court -->
+            <div class="hotspot-card" data-categories="chinese seafood">
+                <div class="hotspot-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Top Spot Food Court">
+                    <div class="rating-badge">
+                        <i class="fas fa-star"></i> 4.5
+                    </div>
+                    <div class="category-badge">
+                        Seafood Heaven
+                    </div>
+                    <button class="favorite-btn" data-id="top-spot">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+                <div class="hotspot-text-card">
+                    <h3>Top Spot Food Court</h3>
+                    <p>Famous open-air food court specializing in fresh seafood. Choose your fish and cooking style from multiple stalls.</p>
+                    <div class="open-time">
+                        <i class="fas fa-store"></i>
+                        <span>Open: Daily (5PM - 11PM)</span>
+                    </div>
+                    <div class="specialties">
+                        <span class="specialties-title">Must-Try Specialties:</span>
+                        <div class="tags">
+                            <span class="tag">Butter Prawns</span>
+                            <span class="tag">Steamed Fish</span>
+                            <span class="tag">Midin Fern</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chong Choon Cafe -->
+            <div class="hotspot-card" data-categories="malay chinese">
+                <div class="hotspot-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2047&q=80" alt="Chong Choon Cafe">
+                    <div class="rating-badge">
+                        <i class="fas fa-star"></i> 4.7
+                    </div>
+                    <div class="category-badge">
+                        Local Breakfast
+                    </div>
+                    <button class="favorite-btn" data-id="chong-choon">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+                <div class="hotspot-text-card">
+                    <h3>Chong Choon Cafe</h3>
+                    <p>Iconic local cafe famous for the best Sarawak Laksa in town. Get here early as they often sell out by midday.</p>
+                    <div class="open-time">
+                        <i class="fas fa-store"></i>
+                        <span>Open: Daily (6:30AM - 12PM)</span>
+                    </div>
+                    <div class="specialties">
+                        <span class="specialties-title">Must-Try Specialties:</span>
+                        <div class="tags">
+                            <span class="tag">Sarawak Laksa</span>
+                            <span class="tag">Kolo Mee</span>
+                            <span class="tag">Teh C Special</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Foodie Tips Section -->
+    <section class="section-container" id="foodie-tips">
+        <div class="section-header">
+            <h2>Foodie Tips</h2>
+            <p>Insider knowledge to enhance your culinary adventure</p>
+        </div>
+
+        <div class="tips-container">
+            <!-- Timing Tip -->
+            <div class="tip-card green">
+                <div class="tip-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="tip-content">
+                    <h3>Timing is Everything</h3>
+                    <p>Visit popular local eateries early (7-9AM) to avoid crowds and ensure availability of signature dishes that often sell out.</p>
+                </div>
+            </div>
+
+            <!-- Payment Tip -->
+            <div class="tip-card yellow">
+                <div class="tip-icon">
                     <i class="fas fa-money-bill-wave"></i>
                 </div>
-                <h3>Currency & Payment</h3>
-                <p>Malaysian Ringgit (RM). ATMs widely available. Many street vendors prefer cash.</p>
-            </div>
-            <!-- Language -->
-            <div class="tip-card">
-                <div class="tip-icon blue">
-                    <i class="fas fa-globe"></i>
+                <div class="tip-content">
+                    <h3>Cash is King</h3>
+                    <p>Most local food stalls and markets prefer cash payments. Keep small bills (RM5-20) handy for easier transactions.</p>
                 </div>
-                <h3>Language</h3>
-                <p>Malay is official, but English is widely spoken in tourist areas and hotels.</p>
             </div>
-            <!-- Climate -->
-            <div class="tip-card">
-                <div class="tip-icon yellow">
-                    <i class="fas fa-temperature-high"></i>
+
+            <!-- Spice Level Tip -->
+            <div class="tip-card red">
+                <div class="tip-icon">
+                    <i class="fas fa-pepper-hot"></i>
                 </div>
-                <h3>Climate</h3>
-                <p>Tropical year-round: 24–32°C. Pack light, breathable clothing and rain gear.</p>
+                <div class="tip-content">
+                    <h3>Spice Awareness</h3>
+                    <p>Many local dishes are spicy. Ask for "kurang pedas" (less spicy) if you prefer milder flavors, or "tidak pedas" for no spice.</p>
+                </div>
             </div>
-            <!-- Safety -->
-            <div class="tip-card">
-                <div class="tip-icon green">
-                    <i class="fas fa-shield-alt"></i>
+
+            <!-- Local Etiquette Tip -->
+            <div class="tip-card green">
+                <div class="tip-icon">
+                    <i class="fas fa-hands-helping"></i>
                 </div>
-                <h3>Safety</h3>
-                <p>Kuching is very safe. Standard precautions apply. Respect local customs and dress modestly at religious sites.</p>
+                <div class="tip-content">
+                    <h3>Local Etiquette</h3>
+                    <p>It's common to share tables during busy hours. A simple smile and "boleh kongsi?" (can share?) is all you need.</p>
+                </div>
             </div>
-            <!-- Connectivity -->
-            <div class="tip-card">
-                <div class="tip-icon purple">
-                    <i class="fas fa-wifi"></i>
+
+            <!-- Dietary Tip -->
+            <div class="tip-card yellow">
+                <div class="tip-icon">
+                    <i class="fas fa-leaf"></i>
                 </div>
-                <h3>Connectivity</h3>
-                <p>Free WiFi in most hotels and cafes. SIM cards available at airport (RM30–50).</p>
+                <div class="tip-content">
+                    <h3>Dietary Preferences</h3>
+                    <p>Vegetarian options are available but limited. Look for Chinese Buddhist restaurants or ask for "tidak ada daging" (no meat).</p>
+                </div>
             </div>
-            <!-- Healthcare -->
-            <div class="tip-card">
-                <div class="tip-icon red">
-                    <i class="fas fa-heartbeat"></i>
+
+            <!-- Seasonal Tip -->
+            <div class="tip-card red">
+                <div class="tip-icon">
+                    <i class="fas fa-cloud-sun"></i>
                 </div>
-                <h3>Healthcare</h3>
-                <p>Good medical facilities. Sarawak General Hospital and private clinics available. Travel insurance recommended.</p>
+                <div class="tip-content">
+                    <h3>Seasonal Specialties</h3>
+                    <p>Try seasonal fruits like durian (June-August) and rambutan (December-February) from local markets for authentic flavors.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 3-Day Sample Itinerary Section -->
-    <section class="section-container">
-        <h2 class="section-title">3-Day Sample Itinerary</h2>
-        <p class="section-subtitle">Make the most of your Kuching adventure</p>
-        <div class="itinerary-cards">
-            <!-- Day 1: Cultural Immersion -->
-            <div class="itinerary-card green">
-                <div class="day-number">1</div>
-                <h3>Cultural Immersion</h3>
-                <ul class="itinerary-list">
-                    <li>
-                        <i class="fas fa-sun"></i>
-                        <span><strong>Morning:</strong> Sarawak State Museum & Cat Museum</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-cloud"></i>
-                        <span><strong>Afternoon:</strong> Waterfront walk, Fort Margherita, river ferry</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-moon"></i>
-                        <span><strong>Evening:</strong> Top Spot Food Court for seafood dinner</span>
-                    </li>
-                </ul>
+    <!-- Plan Your Visit Section -->
+    <section class="section-container" id="plan-visit">
+        <div class="section-header">
+            <h2>Plan Your Culinary Visit</h2>
+            <p>Make the most of your food adventure in Kuching</p>
+        </div>
+
+        <div class="tips-container">
+            <!-- Best Time to Visit -->
+            <div class="tip-card green">
+                <div class="tip-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="tip-content">
+                    <h3>Best Time for Food Tourism</h3>
+                    <p>March-October (dry season) offers comfortable outdoor dining. Food festivals peak in July (Rainforest World Music Festival).</p>
+                </div>
             </div>
-            <!-- Day 2: Nature & Wildlife -->
-            <div class="itinerary-card green">
-                <div class="day-number">2</div>
-                <h3>Nature & Wildlife</h3>
-                <ul class="itinerary-list">
-                    <li>
-                        <i class="fas fa-sun"></i>
-                        <span><strong>Morning:</strong> Semenggoh Orangutan Centre (10am feeding)</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-cloud"></i>
-                        <span><strong>Afternoon:</strong> Bako National Park day trip (hiking & wildlife)</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-moon"></i>
-                        <span><strong>Evening:</strong> Return to city, rest or explore night markets</span>
-                    </li>
-                </ul>
+
+            <!-- Food Tours -->
+            <div class="tip-card yellow">
+                <div class="tip-icon">
+                    <i class="fas fa-route"></i>
+                </div>
+                <div class="tip-content">
+                    <h3>Guided Food Tours</h3>
+                    <p>Consider joining a local food tour (RM150-250) to discover hidden gems and learn about food culture from experts.</p>
+                </div>
             </div>
-            <!-- Day 3: Food & Culture -->
-            <div class="itinerary-card red">
-                <div class="day-number">3</div>
-                <h3>Food & Culture</h3>
-                <ul class="itinerary-list">
-                    <li>
-                        <i class="fas fa-sun"></i>
-                        <span><strong>Morning:</strong> Sarawak Laksa breakfast, Sarawak Cultural Village</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-cloud"></i>
-                        <span><strong>Afternoon:</strong> Damai Beach relaxation</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-moon"></i>
-                        <span><strong>Evening:</strong> Siniawan Night Market (Fri/Sat only)</span>
-                    </li>
-                </ul>
+
+            <!-- Cooking Classes -->
+            <div class="tip-card red">
+                <div class="tip-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="tip-content">
+                    <h3>Cooking Classes</h3>
+                    <p>Several venues offer Sarawak cooking classes (RM200-350) where you can learn to make Laksa and other local dishes.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="travel-cta">
+    <!-- Culinary CTA Section -->
+    <section class="culinary-cta" id="cta">
         <div class="cta-content">
-            <h2>Start Your Kuching Adventure</h2>
-            <p>Explore culture, nature, and cuisine in Borneo's most charming city</p>
-            <div class="cta-buttons">
-                <a href="index.html" class="cta-btn white">Back to Home</a>
-                <a href="cultural-heritage.html" class="cta-btn orange">Explore Attractions</a>
-            </div>
+            <h2>Ready to Taste Kuching?</h2>
+            <p>Start your culinary adventure through the flavors of Borneo. From street food stalls to fine dining, Kuching offers an unforgettable food journey.</p>
+            <a href="travel-guide.html" class="cta-btn">Plan Your Trip <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
@@ -1354,25 +1443,25 @@
             <div class="footer-column">
                 <h3>Explore</h3>
                 <ul>
-                    <li><a href="cultural-heritage.html">Cultural Heritage</a></li>
-                    <li><a href="natural-wonders.html">Natural Wonders</a></li>
-                    <li><a href="culinary-journey.html">Culinary Journey</a></li>
+                    <li><a href="cultural-heritage.html"><i class="fas fa-chevron-right"></i> Cultural Heritage</a></li>
+                    <li><a href="natural-wonders.html"><i class="fas fa-chevron-right"></i> Natural Wonders</a></li>
+                    <li><a href="culinary-journey.html"><i class="fas fa-chevron-right"></i> Culinary Journey</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Plan Your Trip</h3>
                 <ul>
-                    <li><a href="travel-guide.html">Travel Guide</a></li>
-                    <li><a href="#">Accommodation</a></li>
-                    <li><a href="#">Getting Around</a></li>
+                    <li><a href="travel-guide.html"><i class="fas fa-chevron-right"></i> Travel Guide</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Accommodation</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Getting Around</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Connect</h3>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
@@ -1385,6 +1474,12 @@
     <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-chevron-up"></i>
     </a>
+
+    <!-- Image Zoom Modal -->
+    <div class="image-modal" id="imageModal">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <img class="modal-content" id="modalImage" src="" alt="Zoomed Image">
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1418,6 +1513,32 @@
                 }
             });
             
+            // Quick Navigation Active State
+            const quickNavItems = document.querySelectorAll('.quick-nav-item');
+            const sections = document.querySelectorAll('section');
+            
+            function updateActiveNav() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                quickNavItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href').substring(1) === current) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveNav);
+            
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -1436,72 +1557,124 @@
                 });
             });
             
-            // Interactive Map Functionality
-            const locationCards = document.querySelectorAll('.location-card');
-            const mapPlaceholder = document.querySelector('.map-placeholder');
+            // Search and Filter Functionality
+            const searchBox = document.getElementById('searchBox');
+            const filterTags = document.querySelectorAll('.filter-tag');
+            const dishesGrid = document.getElementById('dishesGrid');
+            const hotspotsContainer = document.getElementById('hotspotsContainer');
             
-            locationCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const location = this.getAttribute('data-location');
+            // Filter by category
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    // Update active state
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
                     
-                    // Update map placeholder with location info
-                    mapPlaceholder.innerHTML = `
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>${this.querySelector('h3').textContent}</h3>
-                        <p>${this.querySelector('p').textContent}</p>
-                        <p>Click another location to explore more</p>
-                    `;
-                    
-                    // Highlight selected card
-                    locationCards.forEach(c => c.style.border = 'none');
-                    this.style.border = '2px solid #10B981';
+                    const filter = this.getAttribute('data-filter');
+                    filterContent(filter);
                 });
             });
             
-            // Map Controls
-            const zoomInBtn = document.getElementById('zoomIn');
-            const zoomOutBtn = document.getElementById('zoomOut');
-            const resetMapBtn = document.getElementById('resetMap');
-            
-            zoomInBtn.addEventListener('click', function() {
-                alert('Zooming in on map...');
-                // In a real implementation, this would interact with a map API
+            // Search functionality
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterContent('all', searchTerm);
             });
             
-            zoomOutBtn.addEventListener('click', function() {
-                alert('Zooming out on map...');
-                // In a real implementation, this would interact with a map API
-            });
-            
-            resetMapBtn.addEventListener('click', function() {
-                mapPlaceholder.innerHTML = `
-                    <i class="fas fa-map-marked-alt"></i>
-                    <h3>Interactive Kuching Map</h3>
-                    <p>Explore attractions, restaurants, and transportation options</p>
-                    <p>Click on the location cards below to learn more</p>
-                `;
+            function filterContent(category, searchTerm = '') {
+                // Filter dishes
+                const dishCards = dishesGrid.querySelectorAll('.dish-card');
+                dishCards.forEach(card => {
+                    const categories = card.getAttribute('data-categories');
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                    
+                    const matchesCategory = category === 'all' || categories.includes(category);
+                    const matchesSearch = searchTerm === '' || 
+                        title.includes(searchTerm) || 
+                        description.includes(searchTerm) ||
+                        tags.some(tag => tag.includes(searchTerm));
+                    
+                    if (matchesCategory && matchesSearch) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
                 
-                // Remove highlights from cards
-                locationCards.forEach(c => c.style.border = 'none');
-            });
+                // Filter hotspots
+                const hotspotCards = hotspotsContainer.querySelectorAll('.hotspot-card');
+                hotspotCards.forEach(card => {
+                    const categories = card.getAttribute('data-categories');
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                    
+                    const matchesCategory = category === 'all' || categories.includes(category);
+                    const matchesSearch = searchTerm === '' || 
+                        title.includes(searchTerm) || 
+                        description.includes(searchTerm) ||
+                        tags.some(tag => tag.includes(searchTerm));
+                    
+                    if (matchesCategory && matchesSearch) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
             
-            // Transport Card Interactions
-            const transportCards = document.querySelectorAll('.transport-card');
+            // Image Zoom Functionality
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
             
-            transportCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const transportType = this.querySelector('h3').textContent;
-                    alert(`You selected: ${transportType}\n\nThis would show more details about ${transportType} in Kuching.`);
+            // Add click event to all food images
+            document.querySelectorAll('.dish-img img, .hotspot-img-wrapper img').forEach(img => {
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', function() {
+                    modalImage.src = this.src;
+                    modalImage.alt = this.alt;
+                    imageModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
                 });
             });
             
-            // Itinerary Card Interactions
-            const itineraryCards = document.querySelectorAll('.itinerary-card');
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                imageModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
             
-            itineraryCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const dayTitle = this.querySelector('h3').textContent;
-                    alert(`Day ${this.querySelector('.day-number').textContent}: ${dayTitle}\n\nThis would expand to show more details about this day's itinerary.`);
+            imageModal.addEventListener('click', function(e) {
+                if (e.target === imageModal) {
+                    imageModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Favorite Button Functionality
+            const favoriteButtons = document.querySelectorAll('.favorite-btn');
+            
+            favoriteButtons.forEach(button => {
+                // Check if item is already favorited
+                const itemId = button.getAttribute('data-id');
+                if (localStorage.getItem(`favorite-${itemId}`)) {
+                    button.classList.add('active');
+                    button.innerHTML = '<i class="fas fa-heart"></i>';
+                }
+                
+                button.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    
+                    if (this.classList.contains('active')) {
+                        this.innerHTML = '<i class="fas fa-heart"></i>';
+                        localStorage.setItem(`favorite-${itemId}`, 'true');
+                    } else {
+                        this.innerHTML = '<i class="far fa-heart"></i>';
+                        localStorage.removeItem(`favorite-${itemId}`);
+                    }
                 });
             });
         });
